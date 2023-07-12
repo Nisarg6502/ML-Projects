@@ -4,7 +4,7 @@ import time
 import matplotlib.pyplot as plt
 
 # create environment
-env = gym.make('CartPole-v1', render_mode='rgb_array')
+env = gym.make('CartPole-v1', render_mode='human')
 
 # reset the environment, returns an initial state
 (state, _) = env.reset()
@@ -16,7 +16,7 @@ env.render()
 env.step(0)
 
 # simulate the environment
-episodeNumber = 5
+episodeNumber = 20
 timeSteps = 100
 positions = []
 angles = []
@@ -32,9 +32,9 @@ for episodeIndex in range(episodeNumber):
             random_action)  # we collect the info of each step
         positions.append(observation[0])
         angles.append(np.degrees(observation[2]))  # Convert angle to degrees
-        time.sleep(0.1)
+        time.sleep(0.05)
         if terminated:
-            time.sleep(1)
+            time.sleep(0.1)
             break
 
 # Plot the cart positions
